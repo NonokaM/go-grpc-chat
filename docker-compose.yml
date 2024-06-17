@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  grpc-server:
+    build: ./server
+    ports:
+      - "50051:50051"
+
+  grpc-client:
+    build: ./client
+    depends_on:
+      - grpc-server
+    stdin_open: true # Dockerコンテナに標準入力を開く
+    tty: true        # ttyを割り当てる
